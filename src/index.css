@@ -1,13 +1,352 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Anek+Latin:wght@200;300;400;500;600;700&display=swap');
+
+
+:root{
+  --clr-neutral-100: #ffffff;
+  --clr-primary-200: #fcfcfc;
+  --clr-primary-300: #757272;
+  --clr-primary-400: #21bf73;
+  --clr-neutral-900: #000000;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*{
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  text-decoration: none;
+  color: inherit;
 }
+
+*,*::before,*::after{
+  box-sizing: border-box;
+}
+
+/* Globals */
+body{
+  font-family: 'Anek Latin', sans-serif;
+  background-color: #f1f1f1;
+}
+
+
+.containerBody{
+  background-color: #f1f1f1;
+  display: grid;
+  padding-bottom: 5rem;
+  position: relative;
+}
+
+/*NavBar*/
+nav{
+  display: grid;
+  background-color: var(--clr-primary-400);
+  padding-block: 1rem 4rem;
+  justify-items: center;
+  border-bottom-left-radius: 70px;
+  position: relative;
+}
+
+.navWrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(1200px, 93%);
+  color: var(--clr-neutral-100);
+}
+
+.lightDark{
+  display: grid;
+  grid-auto-flow: column;
+  gap: 0.5rem;
+}
+
+.divInput{
+  display: grid;
+  align-items: center;
+  grid-template-areas: "stack";
+}
+
+.divInput>*{
+  grid-area: stack;
+}
+
+.checkLightorDark{
+  opacity: 0;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.inputDiv{
+  background-color: var(--clr-neutral-100);
+  height: 7px;
+  width: 22px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  border-radius: 5px;
+  position: relative;
+}
+
+.inputDiv::before{
+  content: "";
+  background-color: #026a38;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  transition: all 0.8s ease-in-out;
+}
+
+.checkLightorDark:checked ~ .inputDiv::before{
+  right: 0;
+  left: unset;
+}
+
+.checkLightorDark:checked ~ .inputDiv{
+  background-color: #000814;
+}
+
+/* SearchBar */
+form{
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 2fr 2fr 1.5fr;
+  position: absolute;
+  top: 4.6rem;
+  background-color: var(--clr-neutral-100);
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+  width: min(1200px, 93%);
+  justify-self: center;
+}
+
+form>*{
+  display: flex;
+  justify-content: center;
+}
+
+.search, .filter{
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+input[type="text"]{
+  font-size: 18px;
+  border: none;
+  background: none;
+  outline: none;
+  width: 100%;
+  padding-block: 0.2rem;
+  caret-color: inherit;
+  color: inherit;
+}
+
+input[type="text"]::placeholder{
+  color: var(--clr-primary-300);
+}
+
+.icon{
+  color: var(--clr-primary-400);
+}
+
+.fulltimeSearch{
+  font-size: 16px;
+  align-items: center;
+  gap: 2rem;
+}
+
+.fulltimeInput{
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+#fullTime{
+  font-weight: 500;
+}
+
+.searchBtn{
+  padding: 0.5rem 2rem;
+}
+
+/* Home Section */
+section{
+  padding-block: 5rem;
+  width: min(1200px, 93%);
+  justify-self: center;
+}
+
+.searchEmpty{
+  font-size: 30px;
+  color: grey;
+  justify-self: center;
+  padding-block: 10rem;
+  text-align: center;
+  line-height: 1.5em;
+}
+
+.cardsWrap{
+  display: grid;
+  gap: 3rem 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.card{
+  background-color: var(--clr-neutral-100);
+  padding: 2.5rem 0.5rem 2rem 2rem;
+  display: grid;
+  gap: 2rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  height: 220px;
+}
+
+.card:hover{
+  border: 2px solid var(--clr-primary-400);
+  transition: all 0.2s ease-in-out;
+  scale: 1.01;
+}
+
+.mid{
+  display: grid;
+  gap: 0.5rem;
+}
+
+.timeContract{
+  display: flex;
+  gap: 1rem;
+  color: var(--clr-primary-300);
+}
+
+.company{
+  color: var(--clr-primary-300);
+}
+
+.location{
+  color: rgb(64, 64, 248);
+}
+
+button{
+  font-weight: 500;
+  background-color: var(--clr-primary-400);
+  color: var(--clr-neutral-100);
+  cursor: pointer;
+  border: none;
+}
+
+.loadMore{
+  padding: 1rem;
+  margin-inline: auto;
+}
+
+button:hover{
+  background-color: #05b761;
+  transition: all 0.2s ease-in-out;
+  scale: 1.01;
+}
+
+
+/* Details Page */
+
+.NoJobClicked{
+  margin-top: 10rem;
+  margin-inline: auto;
+  text-align: center;
+  width: 50%;
+  font-size: 25px;
+  height: 60vh;
+  color: grey;
+}
+
+.jobDetails{
+  margin-top: 1.5rem;
+  display: grid;
+  justify-items: center;
+  gap: 5rem;
+}
+
+main{
+  width: min(750px, 95%);
+  border-radius: 3px;
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 5rem;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--clr-neutral-100);
+  padding: 2rem;
+}
+
+.webName{
+  text-transform: lowercase;
+  color: var(--clr-primary-300);
+}
+
+.compSite{
+  padding: 0.8rem;
+  background-color: var(--clr-primary-400);
+  color: var(--clr-neutral-100);
+  font-weight: 500;
+}
+
+.detailsMain{
+  padding: 2rem;
+  background-color: var(--clr-neutral-100);
+  display: grid;
+  gap: 2rem;
+}
+
+.detailsMainTop, .detailsMainMid, .detailsMainBottom{
+  display: grid;
+  gap: 1.5rem;
+}
+
+.positionApply{
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.positionApply>*{
+  height: fit-content;
+}
+
+.midList{
+  list-style: disc;
+  padding-inline: 15px;
+}
+
+.bottomList{
+  list-style: decimal;
+  padding-inline: 15px;
+}
+
+footer{
+  background-color: var(--clr-neutral-100);
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  position: absolute;
+  bottom: 0;
+}
+
+.detailsFooter{
+  width: min(750px, 95%);
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 1.5rem;
+}
+
+.detailsFooter>*{
+  height: fit-content;
+}
+
